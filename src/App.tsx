@@ -42,7 +42,11 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("patients", JSON.stringify(patients));
+    if (patients.length > 0) {
+      localStorage.setItem("patients", JSON.stringify(patients));
+    } else {
+      localStorage.removeItem("patients");
+    }
   }, [patients]);
 
   return (
